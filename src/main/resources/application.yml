@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:h2:mem:orderdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  cloud:
+    consul:
+      discovery:
+        enabled: true
+        register: true
+        health-check-path: /actuator/health
+      host: consul-client.consul.svc.cluster.local
+      port: 8500
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
