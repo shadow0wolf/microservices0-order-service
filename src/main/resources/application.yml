@@ -24,6 +24,7 @@ spring:
         health-check-path: /actuator/health
         prefer-ip-address: true
         ip-address: ${POD_IP}
+        instance-id: ${spring.application.name}-${POD_IP}
       host: consul-client.consul.svc.cluster.local
       port: 8500
 
