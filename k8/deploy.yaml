@@ -14,8 +14,9 @@ metadata:
   name: order-service
   namespace: services
   labels:
-    app: user-service
+    app: order-service
 spec:
+
   replicas: 2   # Two pods for high availability
 
   selector:
@@ -53,6 +54,12 @@ spec:
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 5
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+
 
 ---
 apiVersion: v1

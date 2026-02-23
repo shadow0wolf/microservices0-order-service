@@ -22,7 +22,8 @@ spring:
         enabled: true
         register: true
         health-check-path: /actuator/health
-        prefer-ip-address: false
+        prefer-ip-address: true
+        ip-address: ${POD_IP}
       host: consul-client.consul.svc.cluster.local
       port: 8500
 
